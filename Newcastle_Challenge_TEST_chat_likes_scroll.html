@@ -1,0 +1,288 @@
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Newcastle Challenge · Sikker test</title><style>:root{font-family:system-ui,Arial;background:#101b2b;color:#f5f7fb}*{box-sizing:border-box}body{max-width:960px;margin:auto;padding:20px}h1{font-size:clamp(1.6rem,5vw,2.7rem)}.muted{color:#b3c3d3}.card{background:#1b2c41;border:1px solid #38516a;border-radius:18px;padding:20px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}button,input,textarea,select{font:inherit}button{background:#ffd35d;color:#192437;border:0;border-radius:9px;padding:10px 15px;font-weight:750;cursor:pointer;margin:5px 5px 5px 0}button:disabled{opacity:1;background:#687587;color:#d2d9e3;cursor:not-allowed;box-shadow:none}input,textarea,select{width:100%;background:#101d2e;border:1px solid #587087;border-radius:8px;color:white;padding:10px;margin:6px 0 12px}label{display:block;margin-top:10px}.pill{display:inline-block;border:1px solid #7d9ab4;border-radius:20px;padding:3px 9px;font-size:.8rem}a{color:#ffd35d}.error{color:#ffb6b6}.ok{color:#9df0c0}.score{display:flex;justify-content:space-between;border-bottom:1px solid #456;padding:8px 0}.hidden{display:none!important}.mission-done{background:#263241!important;border-color:#526173!important;opacity:.78}.mission-done h3{color:#c5ced8}.mission-done p{color:#b3c0cb}.state{display:inline-block;margin-left:8px;border-radius:18px;padding:4px 10px;font-size:.82rem;font-weight:700}.state-pending{background:#655021;color:#ffe49c}.state-approved{background:#204c3c;color:#b6f4d2}.state-rejected{background:#633239;color:#ffd0d0}.state-active{background:#254766;color:#cde9ff}.state-closed{background:#344153;color:#d3dbe5}.mission-done button{cursor:not-allowed}small{color:#afc0cf}video,img{max-width:100%}.chat-log{max-height:360px;overflow-y:auto;background:#101d2e;border:1px solid #38516a;border-radius:10px;padding:12px;margin:12px 0}.chat-msg{padding:8px 0;border-bottom:1px solid #304258;overflow-wrap:anywhere}.chat-msg:last-child{border-bottom:0}.chat-like{margin:8px 0 0;padding:5px 10px;background:#283e57;color:#e6f0fa;border:1px solid #4c6883;border-radius:20px;font-size:.82rem}.chat-like.liked{background:#ffd35d;color:#192437;border-color:#ffd35d}.chat-like:disabled{opacity:.65}.chat-like-status{margin-left:8px;font-size:.8rem;color:#ffb6b6}.chat-msg small{display:block;margin-bottom:4px}.chat-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.chat-tools button{margin:0}.chat-tools span{font-size:.9rem}.chat-status{font-weight:700}.chat-attachments{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.chat-attachments img{max-width:220px;max-height:180px;object-fit:contain;border-radius:8px}.chat-attachments video{max-width:300px;max-height:220px;border-radius:8px}.chat-attachments a{display:inline-block}.chat-file-list{font-size:.85rem;color:#b3c3d3}.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:14px 0}.dash-stat{background:#102137;border:1px solid #3b5875;border-radius:12px;padding:14px}.dash-stat strong{display:block;font-size:1.8rem;color:#ffd35d}.dash-stat span{font-size:.86rem;color:#c2d3e4}.dash-team{padding:12px 0;border-bottom:1px solid #38516a}.dash-team:last-child{border-bottom:0}.dash-team-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.dash-progress{height:8px;background:#0e1c2c;border-radius:8px;overflow:hidden;margin-top:8px}.dash-progress>div{height:100%;background:#ffd35d;border-radius:8px}.dash-actions{display:flex;gap:8px;flex-wrap:wrap}.dash-actions button{font-size:.92rem}.dash-subtitle{margin:16px 0 6px;color:#dce7f4}.mission-control{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #38516a}.mission-control:last-child{border-bottom:0}.mission-control button{margin:0}.mission-control .muted{font-size:.88rem}.mission-control-status{font-weight:700;color:#9df0c0}.mission-control-status.closed{color:#c2cad6}.progress-panel{margin-top:24px;border-top:1px solid #52677d;padding-top:18px}.progress-summary{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.progress-summary span{background:#12253a;border:1px solid #49627b;border-radius:8px;padding:7px 10px}.progress-team{border:1px solid #4b6178;border-radius:12px;margin:12px 0;overflow:hidden}.progress-team summary{cursor:pointer;padding:14px;background:#233a52;font-weight:750}.progress-rows{padding:8px 12px}.progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #354a5e;padding:9px 0}.progress-row:last-child{border:0}.progress-row .progress-title{min-width:0;overflow-wrap:anywhere}.progress-status{white-space:nowrap;font-size:.83rem;font-weight:700}.progress-status.pending{color:#ffe49c}.progress-status.approved{color:#a7edc9}.progress-status.rejected{color:#ffb6b6}.progress-status.missing{color:#b5c2d0}.progress-link{background:#ffd35d;color:#192437;padding:6px 9px;font-size:.78rem;margin:0}.progress-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.progress-controls select{max-width:240px;margin:0}.progress-highlight{outline:3px solid #ffd35d;outline-offset:3px}@media(max-width:520px){.progress-row{align-items:flex-start;flex-direction:column;gap:5px}}
+/* Navigasjon for deltakere og valgfri deltakervisning for administratorer */
+.participant-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;padding:10px;background:#1b2c41;border:1px solid #38516a;border-radius:14px}
+.participant-nav button{flex:1 1 135px;margin:0;background:#283e57;color:#e6f0fa;border:1px solid #4c6883;padding:12px 8px}
+.participant-nav button.active{background:#ffd35d;color:#192437;border-color:#ffd35d}
+.participant-view[hidden],.participant-nav[hidden]{display:none!important}
+@media(max-width:640px){body{padding:12px 12px 95px}.card{padding:15px;margin:10px 0}h1{font-size:1.8rem}.participant-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;margin:0;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));border-radius:14px 14px 0 0;background:#15273b;box-shadow:0 -5px 20px #07111eaa;gap:5px;flex-wrap:nowrap}.participant-nav button{flex:1 1 0;min-width:0;padding:9px 2px;font-size:.72rem;line-height:1.2;white-space:normal}.chat-attachments video{max-width:100%}.chat-attachments img{max-width:min(220px,100%)}}
+
+.mode-switch{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}.mode-switch button{margin:0}.mode-switch button[aria-pressed="true"]{background:#ffd35d;color:#192437}.mode-switch button[aria-pressed="false"]{background:#283e57;color:#e6f0fa;border:1px solid #4c6883}.mode-switch .muted{font-size:.88rem}
+.mission-filter{margin:16px 0 10px;padding:12px 16px;background:#112237;border:1px solid #38516a;border-radius:12px}.mission-filter label{font-weight:700;margin:0 0 6px}.mission-filter select{max-width:340px;margin:4px 0}.mission-filter p{margin:3px 0;font-size:.9rem}.mission-filter .hidden{display:none!important}#challengeGate{border-color:#d6a43a;background:#352d20}#challengeGate h2{color:#ffd35d}#masterControls{border-color:#d6a43a}#masterControls button{min-width:170px}#masterStatus{font-weight:800}#masterStatus.closed{color:#ffb6b6}#masterStatus.open{color:#9df0c0}
+/* Logoer for alle 17 oppdrag – kun visuell oppgradering */
+.mission-heading{display:flex;align-items:center;gap:18px;margin:18px 0 12px}
+.mission-logo{display:block;flex:none;width:140px;height:140px;object-fit:contain;border-radius:16px;background:#101b2b;box-shadow:0 5px 16px #07111e88}
+.mission-heading h3{margin:0;line-height:1.2}
+.mission-item[data-mission-code="G01"] .mission-logo{box-shadow:0 0 0 2px #dcb84c,0 0 22px #dcb84c55}
+.mission-control-logo{width:80px;height:80px;object-fit:contain;border-radius:10px;flex:none}
+.mission-control-info{display:flex;align-items:center;gap:10px;min-width:0}
+@media(max-width:640px){.mission-heading{gap:12px}.mission-logo{width:114px;height:114px}.mission-control-logo{width:64px;height:64px}}
+</style></head><body><header><p class="pill">🔒 PRIVAT TEST · Ikke publiser i hovednettsiden</p><h1>🏆 Newcastle City Challenge</h1><p class="muted">Test av ekte innsending, medieopplasting, administratorgodkjenning og poengtavle.</p></header><section class="card" id="login"><h2>Logg inn i testprosjektet</h2><label>E-post<input type="email" id="email" autocomplete="username"></label><label>Testpassord<input type="password" id="password" autocomplete="current-password"></label><button id="loginBtn">Logg inn</button><p id="loginMsg" role="status"></p></section><section id="challengeGate" class="card hidden" role="status" aria-live="polite"><h2>🔒 Newcastle Challenge er ikke startet ennå</h2><p>Christian åpner konkurransen når alle lag er klare. Oppgaver, poengtavle og lagchat er utilgjengelige frem til da.</p><button id="gateRefresh" type="button">🔄 Sjekk om konkurransen er startet</button><p id="gateStatus" class="muted"></p></section><main id="app" class="hidden"><section id="masterControls" class="card hidden"><h2>🏁 Christians hovedbryter</h2><p id="masterStatus" role="status" aria-live="polite"></p><p class="muted">Kun Christian kan starte eller stoppe hele Challenge. Når den er stengt, har vanlige deltakere ikke tilgang. Lagchat har i tillegg sin egen bryter.</p><div id="masterButtons" class="hidden"><button id="masterOpenBtn" type="button">🟢 Start Challenge</button><button id="masterCloseBtn" type="button">🔴 Stopp Challenge</button></div><p id="masterFeedback" role="status"></p></section><div class="card"><span id="who"></span><button id="logout">Logg ut</button><p id="message" role="status"></p></div><div id="modeSwitch" class="card hidden"><strong>👁️ Velg visning</strong><div class="mode-switch"><button id="showAdminMode" type="button" aria-pressed="true">🛡️ Administratorvisning</button><button id="showParticipantMode" type="button" aria-pressed="false">📱 Deltakervisning</button></div><p class="muted">Bytt visning når som helst. Administratorrettighetene dine beholdes.</p></div><div id="admin" class="card hidden"><h2>📊 Christians Challenge Dashboard</h2><p class="muted">Oppdateres fra registrerte oppdrag, innsendelser og poengtavlen.</p><div id="adminDashboard"></div><section class="progress-panel" id="teamProgress"><h3>📋 Lagenes fremdrift</h3><p class="muted">Alle lag og oppgaver, inkludert Golden Mission. Trykk på et lag for detaljer.</p><div class="progress-controls"><label for="progressFilter">Vis oppgaver<select id="progressFilter"><option value="all">Alle oppgaver</option><option value="pending">Kun til vurdering</option><option value="missing">Kun ikke levert</option></select></label></div><div id="progressContent"></div></section></div><nav id="participantNav" class="participant-nav hidden" aria-label="Deltakermeny"><button type="button" data-view="missions" class="active">🎯 Oppgaver</button><button type="button" data-view="scores">📊 Poengtavle</button><button type="button" data-view="teamChat">💬 Lagchat</button><button type="button" data-view="own">📨 Mine svar</button></nav><div id="scoresPanel" class="card"><h2>📊 Poengtavle</h2><div id="scores">Laster …</div><button id="refresh">Oppdater</button></div><div id="missionsPanel" class="card"><h2>🎯 Oppgaver</h2><p class="muted">Bare aktive oppgaver kan sendes inn. Administrator kan åpne og stenge oppgaver i dashboardet.</p><div class="mission-filter" id="missionFilter"><label for="missionFilterSelect">Vis oppgaver</label><select id="missionFilterSelect"><option value="available">🟢 Tilgjengelige oppgaver</option><option value="completed">✅ Mine fullførte</option><option value="all">📋 Alle oppgaver</option></select><p id="missionFilterCount" class="muted" aria-live="polite"></p></div><div id="missions"></div></div><div id="ownPanel" class="card"><h2>📨 Mine innsendelser</h2><div id="own"></div></div><div id="teamChat" class="card hidden"><h2>🔒 Min lagchat</h2><p id="chatInfo" class="muted"></p><div id="chatContent" class="hidden"><div id="chatMessages" class="chat-log" aria-live="polite"></div><form id="chatForm"><label for="chatText">Melding til laget</label><textarea id="chatText" maxlength="2000" rows="3" placeholder="Skriv til laget ditt … (valgfritt med vedlegg)"></textarea><label for="chatFiles">📎 Bilder og videoer (maks 5 filer, 50 MB per fil)<input id="chatFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm"></label><div id="chatFileList" class="chat-file-list"></div><div class="chat-tools"><button type="submit" id="chatSend">💬 Send melding</button><button type="button" id="chatRefresh">Oppdater chat</button><span id="chatFeedback" role="status"></span></div></form></div></div><div id="adminControls" class="card hidden"><h2>🔐 Styring av lagchatter</h2><p id="adminChatState" class="muted">Laster status …</p><button id="chatOpenBtn" type="button">🔓 Åpne lagchatter</button><button id="chatCloseBtn" type="button">🔒 Steng lagchatter</button><h2>🛡️ Administrator – godkjenning</h2><div id="queue"></div></div></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
+(()=>{'use strict';const URL='https://wvnrmtcaoxzmukeokcwd.supabase.co',KEY='sb_publishable_KgFFfr6f1eJd1azLxx-1mg_im9MjVnA';const db=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true}});const $=id=>document.getElementById(id);const safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let participantView="missions",adminMode="admin";let missionFilter='available';let me=null,admin=false,challengeOpen=false,isChristian=false,loading=false,myTeam=null,teams=[],missions=[],submissions=[],chatOpen=false,chatBusy=false,chatRefreshBusy=false,chatMediaUrls=[],chatInitialScroll=true,chatForceBottom=false;const CHAT_BUCKET='challenge-chat-media',CHAT_TYPES=new Set(['image/jpeg','image/png','image/webp','image/heic','image/heif','video/mp4','video/quicktime','video/webm']);function revokeChatMedia(){for(const url of chatMediaUrls)URL_REVOKE(url);chatMediaUrls=[]}const URL_REVOKE=url=>URL_OBJ.revokeObjectURL(url),URL_OBJ=window.URL;const tell=(s,err=false)=>{$('message').textContent=s;$('message').className=err?'error':'ok'};async function check(q){if(q.error)throw q.error;return q.data}async function rpc(name,args){return check(await db.rpc(name,args))}function isParticipantMode(){return !admin || adminMode==='participant'}
+function setParticipantView(view){
+  if(!['missions','scores','teamChat','own'].includes(view))return;
+  participantView=view;
+  if(!isParticipantMode())return;
+  if(view==='teamChat')chatForceBottom=true;
+  const ids={missions:'missionsPanel',scores:'scoresPanel',teamChat:'teamChat',own:'ownPanel'};
+  for(const [key,id] of Object.entries(ids))$(id).classList.toggle('hidden',key!==view);
+  if(view==='teamChat')requestAnimationFrame(()=>{const log=$('chatMessages');log.scrollTop=log.scrollHeight;chatForceBottom=false});
+  $('participantNav').querySelectorAll('button[data-view]').forEach(btn=>{
+    const selected=btn.dataset.view===view;
+    btn.classList.toggle('active',selected);
+    btn.setAttribute('aria-current',selected?'page':'false');
+  });
+}
+function configureParticipantNav(){
+  const participant=isParticipantMode();
+  $('modeSwitch').classList.toggle('hidden',!admin);
+  $('showAdminMode').setAttribute('aria-pressed',String(!participant));
+  $('showParticipantMode').setAttribute('aria-pressed',String(participant));
+  $('admin').classList.toggle('hidden',!admin||participant);
+  $('adminControls').classList.toggle('hidden',!admin||participant);
+  $('participantNav').classList.toggle('hidden',!participant);$('missionFilter').classList.toggle('hidden',!participant);
+  if(participant){
+    setParticipantView(participantView);
+  }else{
+    for(const id of ['missionsPanel','scoresPanel','ownPanel'])$(id).classList.remove('hidden');
+    $('teamChat').classList.toggle('hidden',!myTeam);
+    if(myTeam)requestAnimationFrame(()=>{const log=$('chatMessages');if(chatInitialScroll)log.scrollTop=log.scrollHeight});
+  }
+}
+$('showAdminMode').onclick=()=>{adminMode='admin';configureParticipantNav();window.scrollTo({top:0,behavior:'smooth'})};
+$('showParticipantMode').onclick=()=>{adminMode='participant';configureParticipantNav();window.scrollTo({top:0,behavior:'smooth'})};
+$('participantNav').addEventListener('click',e=>{
+  const btn=e.target.closest('button[data-view]');
+  if(!btn)return;
+  setParticipantView(btn.dataset.view);
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+function applyMissionFilter(){
+  const items=[...document.querySelectorAll('#missions .mission-item')];
+  let visible=0;
+  for(const item of items){
+    const show=missionFilter==='all'||(missionFilter==='available'&&item.dataset.available==='yes')||(missionFilter==='completed'&&item.dataset.completed==='yes');
+    item.classList.toggle('hidden',!show);
+    if(show)visible++;
+  }
+  $('missionFilterSelect').value=missionFilter;
+  $('missionFilterCount').textContent=visible+' av '+items.length+' oppgaver vises'+(visible===0?' – ingen oppgaver i denne kategorien.':'.');
+}
+$('missionFilterSelect').addEventListener('change',e=>{missionFilter=e.target.value;applyMissionFilter()});
+async function load(){if(loading)return;loading=true;try{const {data:{user}}=await db.auth.getUser();if(!user){$('challengeGate').classList.add('hidden');$('masterControls').classList.add('hidden');$('login').classList.remove('hidden');$('app').classList.add('hidden');return;}$('login').classList.add('hidden');me=await check(await db.from('newcastle_participants').select('id,full_name').eq('auth_user_id',user.id).single());admin=await rpc('challenge_is_admin');isChristian=admin&&user.id==='3a4b9cd0-e6fd-427c-a733-92a10b01d6ec';challengeOpen=await rpc('challenge_is_open');updateMasterUI();if(!challengeOpen&&!admin){$('app').classList.add('hidden');$('challengeGate').classList.remove('hidden');$('gateStatus').textContent='Sist kontrollert: '+new Date().toLocaleTimeString('nb-NO');return;}$('challengeGate').classList.add('hidden');$('app').classList.remove('hidden');const members=await check(await db.from('challenge_team_members').select('team_id,participant_id'));myTeam=members.find(x=>x.participant_id===me.id)?.team_id||null;teams=await check(await db.from('challenge_teams').select('id,name'));missions=await check(await db.from('challenge_missions').select('id,title,description,max_points,category,is_active,sort_order').order('sort_order'));submissions=await check(await db.from('challenge_submissions').select('id,team_id,mission_id,answer_text,status,points_awarded,admin_comment,submitted_at').order('submitted_at',{ascending:false}));const scores=await check(await db.from('challenge_leaderboard').select('*'));$('who').textContent=me.full_name+' · '+(admin?'Administrator':'Deltaker')+(myTeam?' · '+teams.find(t=>t.id===myTeam)?.name:'');$('admin').classList.toggle('hidden',!admin);$('adminControls').classList.toggle('hidden',!admin);await loadChatState();configureParticipantNav();$('scores').innerHTML=scores.sort((a,b)=>b.total_points-a.total_points||b.main_points-a.main_points||b.completed_main_missions-a.completed_main_missions).map((s,i)=>`<div class="score"><span>${i+1}. ${safe(s.team_name)}</span><strong>${s.total_points} poeng</strong></div>`).join('');$('missions').innerHTML=missions.filter(m=>admin||m.id!=='G01').map(m=>{const mine=submissions.find(s=>s.team_id===myTeam&&s.mission_id===m.id&&s.status!=='rejected');const rejected=submissions.find(s=>s.team_id===myTeam&&s.mission_id===m.id&&s.status==='rejected');const state=mine?.status==='approved'?'approved':mine?'pending':rejected?'rejected':m.is_active?'active':'closed';const label=state==='approved'?`✓ Godkjent · ${mine.points_awarded} poeng`:state==='pending'?'⏳ Venter på godkjenning':state==='rejected'?(m.is_active?'Avvist – kan prøves igjen':'Avvist · oppgaven er stengt'):(m.is_active?'Tilgjengelig':'🔒 Stengt');const canSubmit=m.is_active&&myTeam&&!mine;return `<div class="card mission-item ${mine?'mission-done':''}" data-mission-code="${safe(m.id)}" data-available="${m.is_active&&!mine?'yes':'no'}" data-completed="${mine?.status==='approved'?'yes':'no'}"><span class="pill">${safe(m.id)} · ${m.max_points} poeng · ${m.is_active?'Aktiv':'Stengt'}</span><span class="state state-${state}">${label}</span><div class="mission-heading"><img class="mission-logo" src="logos/${safe(m.id)}.png" alt="Logo for ${safe(m.title)}" loading="lazy" width="140" height="140"><h3>${safe(m.title)}</h3></div><p>${safe(m.description)}</p>${mine?'<p>🔒 Laget har allerede sendt inn denne oppgaven.</p>':canSubmit?`<form data-mission="${safe(m.id)}"><label>Tekst / svar<textarea name="answer" rows="3" maxlength="4000"></textarea></label><label>Bilder eller videoer (maks 5, 50 MB per fil)<input type="file" name="files" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm"></label><button type="submit">📤 Send inn</button></form>`:''}</div>`}).join('');document.querySelectorAll('form[data-mission]').forEach(f=>f.onsubmit=e=>submit(e,f));applyMissionFilter();$('own').innerHTML=submissions.filter(s=>s.team_id===myTeam).map(s=>`<p><b>${safe(s.mission_id)}</b> – ${safe(s.status)} · ${s.points_awarded} poeng ${s.admin_comment?'· '+safe(s.admin_comment):''}</p>`).join('')||'Ingen innsendelser.';if(admin){renderAdminDashboard(scores);renderTeamProgress();$('queue').innerHTML=[...submissions].sort((a,b)=>(a.status==='pending'?0:1)-(b.status==='pending'?0:1)).map(s=>`<div class="card" id="review-${safe(s.id)}"><h3>${safe(teams.find(t=>t.id===s.team_id)?.name)} · ${safe(s.mission_id)}</h3><p>${safe(s.answer_text)}</p><p>Status: <b>${safe(s.status)}</b></p><div id="files-${s.id}"></div><label>Vurdering<select id="percent-${s.id}" data-max="${missions.find(m=>m.id===s.mission_id)?.max_points||0}"><option value="100">100 % – Fullført</option><option value="75">75 % – Nesten fullført</option><option value="50">50 % – Delvis utført</option><option value="0">0 % – Avvist</option></select></label><p id="calculated-${s.id}"></p><label>Kommentar<input id="comment-${s.id}" value="${safe(s.admin_comment||'')}"></label><button data-review="${s.id}">${s.status==='pending'?'Lagre vurdering':'Oppdater vurdering'}</button></div>`).join('')||'Ingen innsendelser.';document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>review(b));document.querySelectorAll('select[id^="percent-"]').forEach(sel=>{const submission=submissions.find(s=>String(s.id)===sel.id.slice(8));const max=Number(sel.dataset.max);const options=[100,75,50];if(submission?.status==='rejected')sel.value='0';else if(submission?.status==='approved'){sel.value=String(options.reduce((best,p)=>Math.abs(Math.round(max*p/100)-submission.points_awarded)<Math.abs(Math.round(max*best/100)-submission.points_awarded)?p:best,100))}const update=()=>{$('calculated-'+sel.id.slice(8)).textContent=sel.value==='0'?'Avvist · 0 poeng':'Tildeles '+Math.round(max*Number(sel.value)/100)+' av '+max+' poeng'};sel.onchange=update;update()});const files=await check(await db.from('challenge_submission_files').select('submission_id,storage_path,file_name'));for(const f of files){const slot=$('files-'+f.submission_id);if(!slot)continue;const btn=document.createElement('button');btn.textContent='📎 '+f.file_name;btn.onclick=async()=>{try{const result=await check(await db.storage.from('challenge-media').createSignedUrl(f.storage_path,120));window.open(result.signedUrl,'_blank','noopener')}catch(e){tell(e.message,true)}};slot.append(btn)}}}catch(e){$('app').classList.add('hidden');tell('Kunne ikke laste: '+e.message,true);$('challengeGate').classList.remove('hidden');$('gateStatus').textContent='Kunne ikke kontrollere tilgangen: '+e.message;}finally{loading=false}}function renderTeamProgress(){
+  const root=$('progressContent');
+  const filter=$('progressFilter').value;
+  const ordered=[...missions].sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0));
+  const rows=teams.map(team=>{
+    const states=ordered.map(m=>{
+      const relevant=submissions.filter(s=>s.team_id===team.id&&s.mission_id===m.id);
+      const selected=relevant.find(s=>s.status==='approved')||relevant.find(s=>s.status==='pending')||relevant.find(s=>s.status==='rejected');
+      return {mission:m,submission:selected,status:selected?.status||'missing'};
+    });
+    const counts={approved:0,pending:0,rejected:0,missing:0};
+    for(const r of states)counts[r.status]=(counts[r.status]||0)+1;
+    const shown=states.filter(r=>filter==='all'||r.status===filter);
+    const html=shown.map(({mission:m,submission:sub,status})=>{
+      const label={approved:'✓ Godkjent',pending:'⏳ Til vurdering',rejected:'✕ Avvist',missing:'– Ikke levert'}[status]||status;
+      const points=status==='approved'?` · ${Number(sub.points_awarded)||0} p`:'';
+      const action=status==='pending'?`<button type="button" class="progress-link" data-progress-review="${safe(sub.id)}">Vurder</button>`:'';
+      return `<div class="progress-row"><span class="progress-title"><b>${safe(m.id)}</b> · ${safe(m.title)} ${m.id==='G01'?'🌟':''}</span><span class="progress-status ${status}">${label}${points} ${action}</span></div>`;
+    }).join('')||'<p class="muted">Ingen oppgaver med valgt filter.</p>';
+    return `<details class="progress-team" ${counts.pending?'open':''}><summary>${safe(team.name)} · ${counts.approved} godkjent · ${counts.pending} venter · ${counts.rejected} avvist · ${counts.missing} ikke levert</summary><div class="progress-rows">${html}</div></details>`;
+  }).join('');
+  root.innerHTML=rows||'<p>Ingen lag funnet.</p>';
+  root.querySelectorAll('[data-progress-review]').forEach(btn=>btn.onclick=()=>{
+    const target=$('review-'+btn.dataset.progressReview);
+    if(!target){tell('Fant ikke vurderingen. Oppdater oversikten.',true);return;}
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    target.classList.add('progress-highlight');
+    setTimeout(()=>target.classList.remove('progress-highlight'),3500);
+  });
+}
+function renderAdminDashboard(scores){
+  const statuses={pending:0,approved:0,rejected:0};
+  for(const s of submissions)if(Object.hasOwn(statuses,s.status))statuses[s.status]++;
+  const active=missions.filter(m=>m.is_active).length;
+  const maxScore=Math.max(1,...scores.map(s=>Number(s.total_points)||0));
+  const sorted=[...scores].sort((a,b)=>(Number(b.total_points)||0)-(Number(a.total_points)||0));
+  const stat=(label,value)=>`<div class="dash-stat"><strong>${value}</strong><span>${label}</span></div>`;
+  const teamRows=sorted.map((s,i)=>{
+    const team=teams.find(t=>t.name===s.team_name);
+    const own=team?submissions.filter(x=>x.team_id===team.id):[];
+    const approved=own.filter(x=>x.status==='approved').length;
+    const waiting=own.filter(x=>x.status==='pending').length;
+    const pts=Number(s.total_points)||0;
+    return `<div class="dash-team"><div class="dash-team-head"><strong>${i+1}. ${safe(s.team_name)}</strong><strong>${pts} poeng</strong></div><small>${approved} godkjent · ${waiting} til vurdering</small><div class="dash-progress"><div style="width:${Math.max(0,Math.min(100,pts/maxScore*100))}%"></div></div></div>`;
+  }).join('')||'<p>Ingen lag registrert.</p>';
+  const pending=submissions.filter(s=>s.status==='pending');
+  const pendingText=pending.length?pending.slice(0,6).map(s=>{
+    const team=teams.find(t=>t.id===s.team_id);
+    const mission=missions.find(m=>m.id===s.mission_id);
+    return `<div class="score"><span>${safe(team?.name||s.team_id)} · ${safe(mission?.title||s.mission_id)}</span><span>⏳ Venter</span></div>`;
+  }).join(''):'<p class="ok">Ingen innsendelser venter på godkjenning.</p>';
+  const missionControls=missions.map(m=>`<div class="mission-control"><div class="mission-control-info"><img class="mission-control-logo" src="logos/${safe(m.id)}.png" alt="" loading="lazy" width="80" height="80"><div><strong>${safe(m.id)} · ${safe(m.title)}</strong><div class="muted"><span class="mission-control-status ${m.is_active?'':'closed'}">${m.is_active?'● Åpen':'● Stengt'}</span> · ${Number(m.max_points)} poeng</div></div></div><button type="button" data-toggle-mission="${safe(m.id)}" data-new-active="${m.is_active?'false':'true'}">${m.is_active?'🔒 Steng oppgave':'🔓 Åpne oppgave'}</button></div>`).join('');
+  $('adminDashboard').innerHTML=`<div class="dash-grid">${stat('Venter på vurdering',statuses.pending)}${stat('Godkjente innsendelser',statuses.approved)}${stat('Avviste innsendelser',statuses.rejected)}${stat('Aktive oppgaver',active+' / '+missions.length)}</div><div class="dash-actions"><button type="button" id="dashGoQueue">📨 Gå til godkjenning</button><button type="button" id="dashRefresh">🔄 Oppdater oversikt</button></div><h3 class="dash-subtitle">🏆 Lagoversikt</h3>${teamRows}<h3 class="dash-subtitle">🎯 Åpne og steng oppgaver</h3><p class="muted">Endringene gjelder alle lag umiddelbart. Allerede innsendte oppgaver beholdes.</p><div class="dash-actions"><button type="button" id="dashOpenAll" ${missions.filter(m=>m.id!=='G01').every(m=>m.is_active)?'disabled':''}>🔓 Åpne alle ordinære</button><button type="button" id="dashCloseAll" ${missions.filter(m=>m.id!=='G01').every(m=>!m.is_active)?'disabled':''}>🔒 Steng alle ordinære</button></div><p class="muted">Gjelder kun de 16 ordinære oppgavene. 🌟 Golden Mission (G01) styres separat nedenfor.</p>${missionControls}<h3 class="dash-subtitle">📨 Venter på Christian (${pending.length})</h3>${pendingText}${pending.length>6?`<p class="muted">Viser 6 av ${pending.length}. Se resten under godkjenning.</p>`:''}`;
+  $('dashGoQueue').onclick=()=>document.getElementById('queue').scrollIntoView({behavior:'smooth',block:'start'});
+  $('adminDashboard').querySelectorAll('[data-toggle-mission]').forEach(button=>{
+    button.onclick=async()=>{
+      if(!admin)return;
+      const id=button.dataset.toggleMission;
+      const next=button.dataset.newActive==='true';
+      const mission=missions.find(m=>m.id===id);
+      if(!mission)return;
+      if(!window.confirm(`${next?'Åpne':'Stenge'} oppgaven «${mission.title}» for alle lag?`))return;
+      button.disabled=true;
+      try{
+        await rpc('challenge_set_mission_active',{p_mission_id:id,p_is_active:next});
+        tell(`Oppgaven ${id} er ${next?'åpnet':'stengt'}.`);
+        await load();
+      }catch(e){tell('Kunne ikke endre oppgaven: '+e.message,true);button.disabled=false;}
+    };
+  });
+  for (const [buttonId, next] of [['dashOpenAll',true],['dashCloseAll',false]]) {
+    const button=$(buttonId);
+    button.onclick=async()=>{
+      if(!admin)return;
+      const count=missions.filter(m=>m.id!=='G01').length;
+      if(!window.confirm(`${next?'Åpne':'Stenge'} alle ${count} ordinære oppgaver? Golden Mission (G01) endres ikke.`))return;
+      $('dashOpenAll').disabled=true;
+      $('dashCloseAll').disabled=true;
+      try{
+        const changed=await rpc('challenge_set_all_missions_active',{p_is_active:next});
+        tell(`${changed} ordinære oppgaver er ${next?'åpnet':'stengt'}. Golden Mission er uendret.`);
+        await load();
+      }catch(e){tell('Kunne ikke endre alle oppgavene: '+e.message,true);await load();}
+    };
+  }
+  $('dashRefresh').onclick=load;
+}
+async function loadChatState(){
+  const status=await rpc('challenge_chat_is_open');
+  chatOpen=status===true;
+  $('teamChat').classList.toggle('hidden',isParticipantMode()?participantView!=='teamChat':!myTeam);
+  $('chatContent').classList.toggle('hidden',!chatOpen||!myTeam);
+  $('chatInfo').textContent=!myTeam?'Du er ikke registrert på et lag.':chatOpen?'Åpen for '+(teams.find(t=>t.id===myTeam)?.name||'laget ditt')+'. Bare lagmedlemmer har tilgang.':'Lagchattene er stengt. Christian kan åpne dem under Challenge.';
+  if(admin){$('adminChatState').textContent='Lagchattene er '+(chatOpen?'ÅPNE':'STENGT')+'. Du kan endre dette når som helst.';$('chatOpenBtn').disabled=chatOpen;$('chatCloseBtn').disabled=!chatOpen;}
+  if(chatOpen&&myTeam)await loadChatMessages();else {chatInitialScroll=true;revokeChatMedia();$('chatMessages').replaceChildren();$('chatFiles').value='';$('chatFileList').textContent='';}
+}
+ async function loadChatMessages(){
+  if(chatRefreshBusy||!chatOpen||!myTeam)return;
+  chatRefreshBusy=true;
+  try{
+    const messages=await check(await db.from('challenge_team_chat_messages').select('id,participant_id,message_text,created_at').eq('team_id',myTeam).order('created_at',{ascending:false}).limit(100));
+    const names=new Map(),memberIds=[...new Set((messages||[]).map(m=>m.participant_id))];
+    if(memberIds.length){const people=await check(await db.from('newcastle_participants').select('id,full_name').in('id',memberIds));for(const person of people||[])names.set(person.id,person.full_name)}
+    const ids=(messages||[]).map(m=>m.id);let attachments=[],likes=[];
+    if(ids.length)likes=await check(await db.from('challenge_team_chat_likes').select('message_id,participant_id').in('message_id',ids));
+    const likeCounts=new Map(),myLikes=new Set();
+    for(const like of likes||[]){const id=String(like.message_id);likeCounts.set(id,(likeCounts.get(id)||0)+1);if(like.participant_id===me.id)myLikes.add(id)}
+    if(ids.length)attachments=await check(await db.from('challenge_team_chat_attachments').select('id,message_id,storage_path,file_name,mime_type').in('message_id',ids));
+    const byMessage=new Map();for(const f of attachments||[]){if(!byMessage.has(String(f.message_id)))byMessage.set(String(f.message_id),[]);byMessage.get(String(f.message_id)).push(f)}
+    const log=$('chatMessages'),previousScrollTop=log.scrollTop,wasNearBottom=chatInitialScroll||chatForceBottom||log.scrollHeight-log.scrollTop-log.clientHeight<80;
+    revokeChatMedia();log.replaceChildren();
+    if(!messages.length)log.innerHTML='<p class="muted">Ingen meldinger ennå. Start samtalen!</p>';
+    for(const m of [...messages].reverse()){
+      const div=document.createElement('div');div.className='chat-msg';
+      const small=document.createElement('small');small.textContent=(names.get(m.participant_id)||'Lagmedlem')+' · '+new Date(m.created_at).toLocaleString('nb-NO');div.append(small);
+      if(m.message_text){const content=document.createElement('div');content.textContent=m.message_text;content.style.whiteSpace='pre-wrap';div.append(content)}
+      const files=byMessage.get(String(m.id))||[];
+      if(files.length){const gallery=document.createElement('div');gallery.className='chat-attachments';div.append(gallery);
+        for(const f of files){const holder=document.createElement('div');const label=document.createElement('div');label.className='chat-file-list';label.textContent=f.file_name;holder.append(label);gallery.append(holder);
+          try{
+            // Authenticated download checks storage RLS each time; never create a signed public URL.
+            const blob=await check(await db.storage.from(CHAT_BUCKET).download(f.storage_path));
+            const objectUrl=URL_OBJ.createObjectURL(blob);chatMediaUrls.push(objectUrl);
+            const isVideo=f.mime_type.startsWith('video/');const media=document.createElement(isVideo?'video':'img');media.src=objectUrl;
+            if(isVideo){media.controls=true;media.preload='metadata'}else{media.alt=f.file_name;media.loading='lazy'}
+            holder.append(media);const a=document.createElement('a');a.href=objectUrl;a.download=f.file_name;a.textContent='Last ned';holder.append(document.createTextNode(' '),a);
+          }catch(e){const note=document.createElement('small');note.textContent='Kunne ikke hente vedlegg: '+e.message;holder.append(note)}
+        }
+      }
+      const likeButton=document.createElement('button');likeButton.type='button';
+      likeButton.className='chat-like'+(myLikes.has(String(m.id))?' liked':'');
+      likeButton.setAttribute('aria-pressed',String(myLikes.has(String(m.id))));
+      likeButton.textContent='👍 '+(likeCounts.get(String(m.id))||0);
+      likeButton.title=myLikes.has(String(m.id))?'Fjern din tommel opp':'Gi tommel opp';
+      likeButton.onclick=async()=>{
+        if(!chatOpen||!myTeam||likeButton.disabled)return;
+        likeButton.disabled=true;
+        const oldScroll=log.scrollTop,nearBottom=log.scrollHeight-log.scrollTop-log.clientHeight<80;
+        try{
+          if(myLikes.has(String(m.id))){
+            await check(await db.from('challenge_team_chat_likes').delete().eq('message_id',m.id).eq('participant_id',me.id));
+          }else{
+            await check(await db.from('challenge_team_chat_likes').insert({message_id:m.id,participant_id:me.id}));
+          }
+          await loadChatMessages();
+          if(!nearBottom)log.scrollTop=oldScroll;
+        }catch(e){likeButton.disabled=false;const err=document.createElement('span');err.className='chat-like-status';err.textContent='Kunne ikke oppdatere: '+e.message;likeButton.after(err)}
+      };
+      div.append(likeButton);log.append(div);
+    }
+    if(wasNearBottom)log.scrollTop=log.scrollHeight;else log.scrollTop=previousScrollTop;
+    chatInitialScroll=false;chatForceBottom=false;
+    if(wasNearBottom)requestAnimationFrame(()=>{log.scrollTop=log.scrollHeight});
+  }catch(e){$('chatFeedback').textContent='Kunne ikke hente chat: '+e.message}
+  finally{chatRefreshBusy=false}
+}
+async function sendChat(e){
+  e.preventDefault();if(chatBusy||!chatOpen||!myTeam)return;
+  const body=$('chatText').value.trim(),files=[...$('chatFiles').files];
+  if(!body&&!files.length){$('chatFeedback').textContent='Skriv en melding eller velg vedlegg.';return}
+  if(files.length>5){$('chatFeedback').textContent='Maks fem filer per melding.';return}
+  if(files.some(f=>f.size>50*1024*1024||!CHAT_TYPES.has(f.type))){$('chatFeedback').textContent='Ugyldig filtype eller fil over 50 MB.';return}
+  chatBusy=true;$('chatSend').disabled=true;$('chatFeedback').textContent='Sender …';
+  let messageId=null;
+  try{
+    // RLS verifies team and sender. Select is permitted only while chat is open.
+    const message=await check(await db.from('challenge_team_chat_messages').insert({team_id:myTeam,participant_id:me.id,message_text:body}).select('id').single());messageId=message.id;
+    for(let i=0;i<files.length;i++){
+      const f=files[i];$('chatFeedback').textContent=`Laster opp ${i+1} av ${files.length}: ${f.name}`;
+      const ext=(f.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,8);
+      const path=`${myTeam}/${messageId}/${crypto.randomUUID()}.${ext}`;
+      await check(await db.storage.from(CHAT_BUCKET).upload(path,f,{contentType:f.type,upsert:false}));
+      await check(await db.from('challenge_team_chat_attachments').insert({message_id:messageId,storage_path:path,file_name:f.name,mime_type:f.type}));
+    }
+    $('chatText').value='';$('chatFiles').value='';$('chatFileList').textContent='';$('chatFeedback').textContent='Sendt!';chatForceBottom=true;await loadChatMessages();
+  }catch(e){$('chatFeedback').textContent='Kunne ikke sende: '+e.message+(messageId?' (Meldingen kan være delvis sendt.)':'')}
+  finally{chatBusy=false;$('chatSend').disabled=false}
+}
+$('chatFiles').addEventListener('change',()=>{$('chatFileList').textContent=[...$('chatFiles').files].map(f=>f.name+' ('+(f.size/1048576).toFixed(1)+' MB)').join(' · ')});
+async function setChatOpen(open){
+  const btn=open?$('chatOpenBtn'):$('chatCloseBtn');btn.disabled=true;
+  try{await rpc('challenge_set_chat_open',{p_is_open:open});await loadChatState();tell('Lagchattene er '+(open?'åpnet.':'stengt.'))}
+  catch(e){tell('Kunne ikke endre chatstatus: '+e.message,true)}finally{$('chatOpenBtn').disabled=chatOpen;$('chatCloseBtn').disabled=!chatOpen}
+}
+ function updateMasterUI(){
+   $('masterControls').classList.toggle('hidden',!admin);
+   $('masterStatus').textContent=challengeOpen?'🟢 Challenge er STARTET':'🔒 Challenge er STENGT – deltakerne har ikke tilgang';
+   $('masterStatus').className=challengeOpen?'open':'closed';
+   $('masterButtons').classList.toggle('hidden',!isChristian);
+   $('masterOpenBtn').disabled=challengeOpen;
+   $('masterCloseBtn').disabled=!challengeOpen;
+   if(admin&&!isChristian)$('masterFeedback').textContent='Bare Christian kan bruke hovedbryteren.';
+ }
+ async function changeMasterState(next){
+   if(!isChristian)return;
+   const verb=next?'STARTE':'STOPPE';
+   if(!window.confirm(verb+' hele Newcastle Challenge for alle deltakere?'))return;
+   $('masterOpenBtn').disabled=true;$('masterCloseBtn').disabled=true;
+   $('masterFeedback').textContent='Oppdaterer hovedbryteren …';
+   try{
+     await rpc('challenge_set_open',{p_is_open:next});
+     challengeOpen=await rpc('challenge_is_open');
+     $('masterFeedback').textContent=challengeOpen?'Challenge er startet.':'Challenge er stoppet.';
+     updateMasterUI();await load();
+   }catch(e){$('masterFeedback').textContent='Kunne ikke endre hovedbryteren: '+e.message;updateMasterUI()}
+ }
+ $('masterOpenBtn').onclick=()=>changeMasterState(true);
+ $('masterCloseBtn').onclick=()=>changeMasterState(false);
+ $('gateRefresh').onclick=()=>load();
+ $('progressFilter').onchange=()=>{if(admin)renderTeamProgress()};
+$('chatForm').addEventListener('submit',sendChat);
+$('chatRefresh').onclick=loadChatMessages;
+$('chatOpenBtn').onclick=()=>setChatOpen(true);
+$('chatCloseBtn').onclick=()=>setChatOpen(false);
+setInterval(()=>{if(!document.hidden&&me&&myTeam)loadChatState().catch(e=>{$('chatFeedback').textContent=e.message})},10000);
+async function submit(event,form){event.preventDefault();const btn=form.querySelector('button');btn.disabled=true;try{const id=form.dataset.mission,answer=form.elements.answer.value.trim(),files=[...form.elements.files.files];if(!answer&&!files.length)throw Error('Skriv et svar eller legg ved fil.');if(files.length>5)throw Error('Maks fem filer.');if(files.some(f=>f.size>50*1024*1024))throw Error('Maks 50 MB per fil.');tell('Oppretter innsending …');const submissionId=await rpc('challenge_submit',{p_mission_id:id,p_answer_text:answer});for(let i=0;i<files.length;i++){const f=files[i];tell(`Laster opp ${i+1} av ${files.length}: ${f.name}`);const ext=(f.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,8);const path=`${myTeam}/${submissionId}/${crypto.randomUUID()}.${ext}`;await check(await db.storage.from('challenge-media').upload(path,f,{contentType:f.type,upsert:false}));await rpc('challenge_register_file',{p_submission_id:submissionId,p_storage_path:path,p_file_name:f.name,p_mime_type:f.type})}tell('Innsendingen er registrert!');await load()}catch(e){tell('Innsending feilet: '+e.message,true)}finally{btn.disabled=false}}async function review(b){b.disabled=true;try{const id=b.dataset.review,percent=Number($('percent-'+id).value),max=Number($('percent-'+id).dataset.max),status=percent===0?'rejected':'approved',points=status==='approved'?Math.round(max*percent/100):0,comment=$('comment-'+id).value;await rpc('challenge_review',{p_submission_id:id,p_status:status,p_points:points,p_comment:comment});tell('Vurderingen er lagret.');await load()}catch(e){tell('Godkjenning feilet: '+e.message,true)}finally{b.disabled=false}}$('loginBtn').onclick=async()=>{try{$('loginMsg').textContent='Logger inn …';await check(await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value}));$('password').value='';$('loginMsg').textContent='';await load()}catch(e){$('loginMsg').textContent=e.message}};$('logout').onclick=async()=>{await db.auth.signOut();location.reload()};$('refresh').onclick=load;load();setInterval(()=>{if(!document.hidden)load()},10000)})();
+</script></body></html>
