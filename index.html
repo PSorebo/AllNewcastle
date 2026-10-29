@@ -120,6 +120,16 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
     [17,'Mats Hovland','Viaplay'],[18,'Erik Bjerke','Global Connect']
   ];
   let client, currentUser = null, myParticipant = null, channel = null, loaded = false, busy = false, firstChatRender = true, reloadPending = false;
+  // Rull først når chat-panelet er synlig (viktig for installert mobilapp).
+  function scrollChatToLatest() {
+    const panel = document.getElementById('chat');
+    const feed = document.getElementById('chat-feed');
+    if (!panel?.classList.contains('active') || !feed || !currentUser) return;
+    const go = () => { if (panel.classList.contains('active')) feed.scrollTop = feed.scrollHeight; };
+    requestAnimationFrame(() => requestAnimationFrame(go));
+    setTimeout(go, 120);
+  }
+  document.querySelector('[data-tab="chat"]').addEventListener('click', scrollChatToLatest);
   const imageUrls = new Map();
   const options = names.map(([id,name,company]) => `<option value="${id}">${escChat(name)} – ${escChat(company)}</option>`).join('');
   root.innerHTML = `<div class="chat-intro"><h2>💬 ALL NEWCASTLE – felles chat</h2><p>Kun for turens 18 deltakere. Meldinger og bilder deles med gruppen.</p></div>
@@ -284,7 +294,7 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
         box.appendChild(likeBtn);
         feed.appendChild(box);
       }
-      if(nearBottom){feed.scrollTop=feed.scrollHeight;requestAnimationFrame(()=>{if(firstChatRender||nearBottom)feed.scrollTop=feed.scrollHeight;});}firstChatRender=false;
+      if(nearBottom){feed.scrollTop=feed.scrollHeight;requestAnimationFrame(()=>{feed.scrollTop=feed.scrollHeight;});if(firstChatRender)scrollChatToLatest();}firstChatRender=false;
     }catch(err){$('chat-feed').textContent='Kunne ikke hente meldinger: '+(err.message||'ukjent feil')+'. Kontroller at SQL-oppsettet er kjørt.';}
     finally{loaded=false;if(reloadPending){reloadPending=false;loadMessages();}}
   }
