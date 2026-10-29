@@ -6,6 +6,7 @@
 /* Newcastle felles chat */
 .chat-intro{background:#14283b;color:#fff;border-radius:16px;padding:17px;margin:0 0 16px}.chat-intro h2{margin:0 0 6px;color:#00d0ae}.chat-intro p{margin:0;color:#d6e2e7;font-size:13px}.chat-field{display:flex;flex-direction:column;gap:5px;margin:12px 0}.chat-field label{font-size:13px;font-weight:800}.chat-field input,.chat-field select,.chat-compose textarea{width:100%;border:1px solid #cbd6dd;border-radius:10px;padding:12px;font:inherit;background:#fff;color:#122235}.chat-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.chat-btn{border:0;border-radius:10px;background:#0e1b2b;color:#fff;padding:12px 16px;font-weight:800}.chat-btn.secondary{background:#e5edf0;color:#163044}.chat-btn:disabled{opacity:.5;cursor:wait}.chat-hint{font-size:12px;color:#60717c;line-height:1.5}.chat-error{color:#a62a2a;font-weight:750}.chat-success{color:#006d62;font-weight:750}.chat-feed{height:min(62vh,550px);min-height:300px;overflow-y:auto;background:#f5f8fa;border:1px solid #e0e8ed;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}.chat-message{align-self:flex-start;max-width:94%;background:#fff;border-radius:13px;padding:10px 12px;box-shadow:0 1px 5px #12223512;overflow-wrap:anywhere}.chat-message.mine{align-self:flex-end;background:#e0f8f2}.chat-message .by{font-size:12px;font-weight:850;color:#006c60}.chat-message .when{font-size:11px;color:#60717c;margin-left:7px}.chat-message p{margin:7px 0 0;white-space:pre-wrap;line-height:1.45}.chat-message img{max-width:100%;max-height:320px;display:block;border-radius:9px;margin-top:9px;object-fit:contain}.chat-compose{display:grid;gap:9px;margin-top:12px}.chat-compose textarea{min-height:80px;resize:vertical}.chat-session{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.chat-photo{display:block;font-size:13px}.chat-loading{font-size:13px;color:#637382}.chat-invite-note{background:#fff4db;padding:10px;border-radius:9px;font-size:12px;color:#6b521a}
 
+.chat-like{margin-top:9px;border:1px solid #d4e1e5;border-radius:20px;background:#f4f8fa;color:#234456;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}.chat-like.active{background:#d4f5e9;border-color:#62bba5;color:#07594a;font-weight:800}.chat-like:disabled{opacity:.55;cursor:wait}
 /* Personlige flybilletter – LIVE */
 .ticket-grid{display:grid;gap:9px}.ticket-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px;border:1px solid #e0e8ed;border-radius:10px;flex-wrap:wrap}.ticket-row small{display:block;color:#60717c}.ticket-actions{display:flex;gap:7px;flex-wrap:wrap}.ticket-actions button,.ticket-actions a{border:0;border-radius:9px;background:#0e1b2b;color:#fff;padding:10px 12px;text-decoration:none;font-weight:750;font-size:13px}.ticket-actions button:disabled{opacity:.5}.ticket-status{margin:10px 0;font-size:13px}.ticket-status.error{color:#a62a2a}.ticket-upload{width:100%;max-width:300px}.ticket-pill{font-size:12px;font-weight:800;color:#006d62}.ticket-pill.missing{color:#866200}
 </style></head><body>
@@ -118,7 +119,7 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
     [14,'Sondre Thorsen','Allente Norge'],[15,'Christian Sjøsaasen','Allente Norge'],[16,'Petter Sørebø','Allente Norge'],
     [17,'Mats Hovland','Viaplay'],[18,'Erik Bjerke','Global Connect']
   ];
-  let client, currentUser = null, myParticipant = null, channel = null, loaded = false, busy = false;
+  let client, currentUser = null, myParticipant = null, channel = null, loaded = false, busy = false, firstChatRender = true, reloadPending = false;
   const imageUrls = new Map();
   const options = names.map(([id,name,company]) => `<option value="${id}">${escChat(name)} – ${escChat(company)}</option>`).join('');
   root.innerHTML = `<div class="chat-intro"><h2>💬 ALL NEWCASTLE – felles chat</h2><p>Kun for turens 18 deltakere. Meldinger og bilder deles med gruppen.</p></div>
@@ -243,23 +244,29 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
     catch(err){status('chat-auth-status',err.message||'Aktivering feilet. Ikke prøv gjentatte ganger; kontakt arrangøren.',true);}finally{setBusy(false);}
   };
   $('chat-logout').onclick=async()=>{await client.auth.signOut();await showLoggedOut();};
-  async function showLoggedOut(){if(channel){await client.removeChannel(channel);channel=null;}currentUser=null;myParticipant=null;loaded=false;imageUrls.clear();$('chat-room').hidden=true;$('chat-auth-card').hidden=false;$('chat-feed').replaceChildren();}
+  async function showLoggedOut(){if(channel){await client.removeChannel(channel);channel=null;}currentUser=null;myParticipant=null;loaded=false;firstChatRender=true;imageUrls.clear();$('chat-room').hidden=true;$('chat-auth-card').hidden=false;$('chat-feed').replaceChildren();}
   async function showRoom(user){
     currentUser=user;
     const {data:me,error}=await client.from('newcastle_participants').select('id,full_name,company').eq('auth_user_id',user.id).maybeSingle();
     if(error||!me){await client.auth.signOut();await showLoggedOut();throw Error('Denne kontoen er ikke koblet til en Newcastle-deltaker. Kontakt arrangøren.');}
-    myParticipant=me;$('chat-who').textContent='Innlogget: '+me.full_name;$('chat-auth-card').hidden=true;$('chat-room').hidden=false;
+    myParticipant=me;firstChatRender=true;$('chat-who').textContent='Innlogget: '+me.full_name;$('chat-auth-card').hidden=true;$('chat-room').hidden=false;
     refreshPushStatus();
     await loadMessages();
     if(channel)await client.removeChannel(channel);
-    channel=client.channel('newcastle-chat-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'newcastle_messages'},()=>loadMessages()).subscribe();
+    channel=client.channel('newcastle-chat-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'newcastle_messages'},()=>loadMessages()).on('postgres_changes',{event:'*',schema:'public',table:'newcastle_message_likes'},()=>loadMessages()).subscribe();
   }
   async function loadMessages(){
-    if(!currentUser||loaded)return;loaded=true;
+    if(!currentUser)return;if(loaded){reloadPending=true;return;}loaded=true;
     try{
       const {data,error}=await client.from('newcastle_messages').select('id,participant_id,body,image_path,created_at').order('created_at',{ascending:false}).limit(150);
       if(error)throw error;
-      const messages=(data||[]).reverse();const feed=$('chat-feed');const nearBottom=feed.scrollHeight-feed.scrollTop-feed.clientHeight<110;
+      const messages=(data||[]).reverse();const feed=$('chat-feed');const nearBottom=firstChatRender || feed.scrollHeight-feed.scrollTop-feed.clientHeight<110;
+      const messageIds=messages.map(m=>m.id);const likesByMessage=new Map();const mineLikes=new Set();
+      if(messageIds.length){
+        const {data:likes,error:likesError}=await client.from('newcastle_message_likes').select('message_id,participant_id').in('message_id',messageIds);
+        if(likesError)throw likesError;
+        for(const like of likes||[]){likesByMessage.set(String(like.message_id),(likesByMessage.get(String(like.message_id))||0)+1);if(like.participant_id===myParticipant?.id)mineLikes.add(String(like.message_id));}
+      }
       feed.replaceChildren();
       if(!messages.length){const hint=document.createElement('p');hint.className='chat-loading';hint.textContent='Ingen meldinger ennå. Bli den første som skriver!';feed.appendChild(hint);}
       for(const m of messages){
@@ -271,11 +278,15 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
             client.storage.from(bucket).createSignedUrl(m.image_path,3600).then(({data,error})=>{if(!error&&data?.signedUrl){imageUrls.set(m.image_path,{url:data.signedUrl,expires:Date.now()+3500000});img.src=data.signedUrl;a.href=data.signedUrl;}else{a.textContent='Bildet kunne ikke lastes';}});
           }
         }
+        const liked=mineLikes.has(String(m.id));const count=likesByMessage.get(String(m.id))||0;
+        const likeBtn=document.createElement('button');likeBtn.type='button';likeBtn.className='chat-like'+(liked?' active':'');likeBtn.textContent='👍 '+(count||'');likeBtn.setAttribute('aria-label',(liked?'Fjern likerklikk':'Lik melding')+', '+count+' likerklikk');likeBtn.setAttribute('aria-pressed',String(liked));
+        likeBtn.onclick=async()=>{likeBtn.disabled=true;try{let result;if(liked){result=await client.from('newcastle_message_likes').delete().eq('message_id',m.id).eq('participant_id',myParticipant.id);}else{result=await client.from('newcastle_message_likes').insert({message_id:m.id,participant_id:myParticipant.id});}if(result.error)throw result.error;await loadMessages();}catch(e){alert('Kunne ikke lagre 👍: '+(e.message||'ukjent feil'));}finally{likeBtn.disabled=false;}};
+        box.appendChild(likeBtn);
         feed.appendChild(box);
       }
-      if(nearBottom)feed.scrollTop=feed.scrollHeight;
+      if(nearBottom){feed.scrollTop=feed.scrollHeight;requestAnimationFrame(()=>{if(firstChatRender||nearBottom)feed.scrollTop=feed.scrollHeight;});}firstChatRender=false;
     }catch(err){$('chat-feed').textContent='Kunne ikke hente meldinger: '+(err.message||'ukjent feil')+'. Kontroller at SQL-oppsettet er kjørt.';}
-    finally{loaded=false;}
+    finally{loaded=false;if(reloadPending){reloadPending=false;loadMessages();}}
   }
   $('chat-send-form').onsubmit=async e=>{
     e.preventDefault();if(busy||!myParticipant)return;
