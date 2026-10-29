@@ -5,8 +5,11 @@
 
 /* Newcastle felles chat */
 .chat-intro{background:#14283b;color:#fff;border-radius:16px;padding:17px;margin:0 0 16px}.chat-intro h2{margin:0 0 6px;color:#00d0ae}.chat-intro p{margin:0;color:#d6e2e7;font-size:13px}.chat-field{display:flex;flex-direction:column;gap:5px;margin:12px 0}.chat-field label{font-size:13px;font-weight:800}.chat-field input,.chat-field select,.chat-compose textarea{width:100%;border:1px solid #cbd6dd;border-radius:10px;padding:12px;font:inherit;background:#fff;color:#122235}.chat-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.chat-btn{border:0;border-radius:10px;background:#0e1b2b;color:#fff;padding:12px 16px;font-weight:800}.chat-btn.secondary{background:#e5edf0;color:#163044}.chat-btn:disabled{opacity:.5;cursor:wait}.chat-hint{font-size:12px;color:#60717c;line-height:1.5}.chat-error{color:#a62a2a;font-weight:750}.chat-success{color:#006d62;font-weight:750}.chat-feed{height:min(62vh,550px);min-height:300px;overflow-y:auto;background:#f5f8fa;border:1px solid #e0e8ed;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}.chat-message{align-self:flex-start;max-width:94%;background:#fff;border-radius:13px;padding:10px 12px;box-shadow:0 1px 5px #12223512;overflow-wrap:anywhere}.chat-message.mine{align-self:flex-end;background:#e0f8f2}.chat-message .by{font-size:12px;font-weight:850;color:#006c60}.chat-message .when{font-size:11px;color:#60717c;margin-left:7px}.chat-message p{margin:7px 0 0;white-space:pre-wrap;line-height:1.45}.chat-message img{max-width:100%;max-height:320px;display:block;border-radius:9px;margin-top:9px;object-fit:contain}.chat-compose{display:grid;gap:9px;margin-top:12px}.chat-compose textarea{min-height:80px;resize:vertical}.chat-session{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.chat-photo{display:block;font-size:13px}.chat-loading{font-size:13px;color:#637382}.chat-invite-note{background:#fff4db;padding:10px;border-radius:9px;font-size:12px;color:#6b521a}
+
+/* Personlige flybilletter – LIVE */
+.ticket-grid{display:grid;gap:9px}.ticket-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px;border:1px solid #e0e8ed;border-radius:10px;flex-wrap:wrap}.ticket-row small{display:block;color:#60717c}.ticket-actions{display:flex;gap:7px;flex-wrap:wrap}.ticket-actions button,.ticket-actions a{border:0;border-radius:9px;background:#0e1b2b;color:#fff;padding:10px 12px;text-decoration:none;font-weight:750;font-size:13px}.ticket-actions button:disabled{opacity:.5}.ticket-status{margin:10px 0;font-size:13px}.ticket-status.error{color:#a62a2a}.ticket-upload{width:100%;max-width:300px}.ticket-pill{font-size:12px;font-weight:800;color:#006d62}.ticket-pill.missing{color:#866200}
 </style></head><body>
-<header><img class="hero" src="all-newcastle-header.png" alt="ALL NEWCASTLE 2026 – Viaplay og Allente over St James’ Park og Newcastle"><div class="hero-sub">31 OKT – 3 NOV · ⚽ FOTBALL / MAT / FELLESSKAP</div></header><main class="wrap"><section class="count"><span>✈️ Avreise fra Oslo lufthavn (Gardermoen) · lørdag 31. oktober kl. 09.35</span><strong id="countdown">Beregner nedtelling …</strong><span class="muted" style="color:#c3ced9">Alle klokkeslett i programmet er lokale på reisemålet.</span></section><a class="chat-shortcut" href="#chat" id="chat-shortcut" aria-label="Åpne felles chat i All Newcastle">💬 ALL NEWCASTLE-chat <small>Åpne felles chat →</small></a><nav class="tabs" aria-label="Navigasjon"><button class="active" data-tab="program">Program</button><button data-tab="sjekkliste">Min liste</button><button data-tab="sondag">Søndagstips</button><button data-tab="deltagere">Deltagerliste</button><button data-tab="chat">💬 Chat</button><button data-tab="hotell">Hotell</button><button data-tab="kart">Kart</button><button data-tab="info">Praktisk</button></nav><section id="program" class="panel active"></section><section id="sjekkliste" class="panel"></section><section id="sondag" class="panel"></section><section id="deltagere" class="panel"></section><section id="chat" class="panel"></section><section id="hotell" class="panel"></section><section id="kart" class="panel"></section><section id="info" class="panel"></section><footer>Foreløpig reiseprogram · Oppdateres av arrangør ved ny versjon</footer></main>
+<header><img class="hero" src="all-newcastle-header.png" alt="ALL NEWCASTLE 2026 – Viaplay og Allente over St James’ Park og Newcastle"><div class="hero-sub">31 OKT – 3 NOV · ⚽ FOTBALL / MAT / FELLESSKAP</div></header><main class="wrap"><section class="count"><span>✈️ Avreise fra Oslo lufthavn (Gardermoen) · lørdag 31. oktober kl. 09.35</span><strong id="countdown">Beregner nedtelling …</strong><span class="muted" style="color:#c3ced9">Alle klokkeslett i programmet er lokale på reisemålet.</span></section><a class="chat-shortcut" href="#chat" id="chat-shortcut" aria-label="Åpne felles chat i All Newcastle">💬 ALL NEWCASTLE-chat <small>Åpne felles chat →</small></a><nav class="tabs" aria-label="Navigasjon"><button class="active" data-tab="program">Program</button><button data-tab="sjekkliste">Min liste</button><button data-tab="sondag">Søndagstips</button><button data-tab="deltagere">Deltagerliste</button><button data-tab="chat">💬 Chat</button><button data-tab="billetter">✈️ Flybilletter</button><button data-tab="hotell">Hotell</button><button data-tab="kart">Kart</button><button data-tab="info">Praktisk</button></nav><section id="program" class="panel active"></section><section id="sjekkliste" class="panel"></section><section id="sondag" class="panel"></section><section id="deltagere" class="panel"></section><section id="chat" class="panel"></section><section id="billetter" class="panel"></section><section id="hotell" class="panel"></section><section id="kart" class="panel"></section><section id="info" class="panel"></section><footer>Foreløpig reiseprogram · Oppdateres av arrangør ved ny versjon</footer></main>
 <script>
 const maps=(q)=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
 const days=[{date:'LØRDAG 31. OKTOBER',title:'Avreise og første kveld',items:[['09:35','Oslo → Amsterdam','KLM KL1198 · Ankomst Schiphol 11:30'],['12:50','Amsterdam → Newcastle','KLM KL957 · Ankomst Newcastle 13:10'],['15:00','Innsjekk på Leonardo Hotel Newcastle','Scotswood Road, NE1 4AD · se Hotell-fanen','Leonardo Hotel Newcastle Scotswood Road NE1 4AD'],['15:00–19:00','Egentid','Fri tid etter innsjekk frem til felles middag på Gaucho kl. 19:00'],['19:00','Gaucho','Signature Menu – velg retter på stedet','Gaucho Newcastle']]},{date:'SØNDAG 1. NOVEMBER',title:'Smak på Newcastle',items:[['Morgen','Frokost på Leonardo Hotel Newcastle','Scotswood Road, NE1 4AD · se Hotell-fanen'],['Dagtid','Egentid – utforsk Newcastle','Shopping, søndagsmarked, sightseeing eller puber. Se forslagene nedenfor.'],['16:30 · valgfritt','⚽ Liverpool – Arsenal på sportsbar','Premier League · britisk tid (GMT). Forslag: Shark Club, Shearer’s Bar eller WonderBar. Velg pub selv; bord og visning må bekreftes.','Shark Club Newcastle'],['19:30','My Delhi','Middag · meny må velges på forhånd','My Delhi Newcastle']]},{date:'MANDAG 2. NOVEMBER',title:'Kampdagen',items:[['Morgen','Frokost på Leonardo Hotel Newcastle','Scotswood Road, NE1 4AD · se Hotell-fanen'],['10:00–13:00','Faglig Kick off','Faglig samling · sted oppgis senere'],['13:00','Rio Brazilian Steakhouse','Tidlig middag på Quayside · reservasjon avventer bekreftelse','Rio Brazilian Steakhouse Quayside Newcastle'],['17:00–17:30','Hospitality på stadion – foreløpig','Adgang anslått 2,5–3 timer før kamp · oppmøte må bekreftes',"St James Park Newcastle"],['20:00','⚽ Newcastle United – Everton','St. James’ Park · Premier League',"St James Park Newcastle"]]},{date:'TIRSDAG 3. NOVEMBER',title:'Takk for turen',items:[['Morgen','Frokost på Leonardo Hotel Newcastle','Scotswood Road, NE1 4AD · se Hotell-fanen'],['11:00','Buss fra Leonardo Hotel Newcastle','Scotswood Road, NE1 4AD · eksakt hentepunkt bekreftes'],['13:25','Newcastle → Amsterdam','KLM KL958 · Ankomst Schiphol 15:45'],['16:25','Amsterdam → Oslo','KLM KL1205 · Ankomst Oslo lufthavn 18:10']]}];
@@ -290,6 +293,93 @@ geocode();document.querySelector('[data-tab="kart"]').addEventListener('click',(
     }catch(err){status('chat-send-status','Kunne ikke sende: '+(err.message||'ukjent feil'),true);}finally{setBusy(false);}
   };
   client.auth.getUser().then(async ({data,error})=>{if(!error&&data?.user){try{await showRoom(data.user);}catch(err){status('chat-auth-status',err.message,true);}}}).catch(()=>{});
+})();
+</script>
+<script>
+// LIVE: Personlige flybilletter, separat fra felles chat men med samme Supabase-økt.
+(() => {
+  'use strict';
+  const root = document.getElementById('billetter');
+  const URL = 'https://jknsiinfemijosrgfdpl.supabase.co';
+  const KEY = 'sb_publishable_6C3Ibvp0tUGpdkcYcEsr0Q_edqB56Sb';
+  const BUCKET = 'newcastle-flight-tickets';
+  const names = [
+    [1,'Sebastian Nenseth'],[2,'Benjamin Thuve'],[3,'Fritz Ryan Domingo'],[4,'Frode Hegg'],
+    [5,'Fayez Fadie'],[6,'Benjamin Johannessen'],[7,'Filips Grindulis'],[8,'Marius Horni'],
+    [9,'Sarkawt Kareemi'],[10,'Stian Abrahamsen'],[11,'Kenneth Hårsaker'],[12,'Nicklas Huse'],
+    [13,'Børre Syversen'],[14,'Sondre Thorsen'],[15,'Christian Sjøsaasen'],[16,'Petter Sørebø'],
+    [17,'Mats Hovland'],[18,'Erik Bjerke']
+  ];
+  root.innerHTML = `<article class="card"><h2>✈️ Mine flybilletter</h2><p class="muted">Din personlige flybillett er kun tilgjengelig når du er logget inn. Bruk samme PIN-innlogging som i felles chat.</p><div id="ticket-status" class="ticket-status" role="status" aria-live="polite">Kontrollerer innlogging …</div><div id="ticket-self"></div></article><article class="card" id="ticket-admin" hidden><h2>🗂️ Administrer flybilletter</h2><p class="muted">Kun for arrangører. Last opp én PDF per deltaker (maks 10 MB). En ny opplasting erstatter den tidligere billetten.</p><div id="ticket-list" class="ticket-grid"></div></article>`;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const setStatus = (s,err=false) => { $('ticket-status').textContent=s; $('ticket-status').classList.toggle('error',err); };
+  if (!window.supabase?.createClient) {setStatus('Kunne ikke laste inn innloggingstjenesten.',true);return;}
+  const db = window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+  let me = null, admin = false, docs = [], busy = false;
+  const isAdmin = p => p && (p.id === 15 || p.id === 16);
+  async function refresh(){
+    const {data:{user},error:authError}=await db.auth.getUser();
+    if(authError || !user){me=null;admin=false;docs=[];$('ticket-self').replaceChildren();$('ticket-admin').hidden=true;setStatus('Logg inn under 💬 Chat, og kom tilbake hit for å se din billett.');return;}
+    const {data:p,error:pe}=await db.from('newcastle_participants').select('id,full_name').eq('auth_user_id',user.id).maybeSingle();
+    if(pe||!p){setStatus('Innlogget konto er ikke koblet til en deltaker.',true);return;}
+    me=p;admin=isAdmin(p);
+    const {data:rows,error:de}=await db.from('newcastle_flight_tickets').select('participant_id,file_path,updated_at').order('participant_id');
+    if(de){setStatus('Billetter er ikke klargjort i LIVE-databasen ennå: '+de.message,true);return;}
+    docs=rows||[];
+    setStatus('Innlogget som '+me.full_name+'.');
+    renderSelf();renderAdmin();
+  }
+  async function openTicket(path){
+    // Open a tab synchronously on click so mobile browsers don't block it.
+    const tab=window.open('about:blank','_blank');
+    try{
+      const {data,error}=await db.storage.from(BUCKET).createSignedUrl(path,120);
+      if(error||!data?.signedUrl)throw Error(error?.message||'Kunne ikke åpne billetten.');
+      if(tab){tab.opener=null;tab.location.replace(data.signedUrl);}
+      else window.location.href=data.signedUrl;
+    }catch(e){if(tab)tab.close();throw e;}
+  }
+  function renderSelf(){
+    const own=docs.find(x=>x.participant_id===me.id);
+    $('ticket-self').innerHTML=own?`<div class="ticket-row"><div><strong>📄 Flybillett – ${esc(me.full_name)}</strong><small>PDF · personlig dokument</small></div><div class="ticket-actions"><button id="ticket-open-mine" type="button">Åpne billetten ↗</button></div></div>`:`<p class="muted">Din flybillett er ikke lastet opp ennå. Du får tilgang her når arrangøren har lagt den inn.</p>`;
+    if(own)$('ticket-open-mine').onclick=()=>openTicket(own.file_path).catch(e=>setStatus(e.message,true));
+  }
+  function renderAdmin(){
+    $('ticket-admin').hidden=!admin;if(!admin)return;
+    $('ticket-list').innerHTML=names.map(([id,name])=>{
+      const doc=docs.find(x=>x.participant_id===id);
+      return `<div class="ticket-row" data-ticket-id="${id}"><div><strong>${esc(name)}</strong><small class="ticket-pill ${doc?'':'missing'}">${doc?'✓ Billett lastet opp':'Mangler billett'}</small></div><div class="ticket-actions"><input class="ticket-upload" type="file" accept="application/pdf,.pdf" aria-label="Velg PDF for ${esc(name)}"><button class="ticket-save" type="button">${doc?'Erstatt PDF':'Last opp PDF'}</button>${doc?'<button class="ticket-view" type="button">Se PDF</button>':''}</div></div>`;
+    }).join('');
+    $('ticket-list').querySelectorAll('[data-ticket-id]').forEach(row=>{
+      const id=Number(row.dataset.ticketId),doc=docs.find(x=>x.participant_id===id);
+      row.querySelector('.ticket-save').onclick=()=>uploadTicket(id,row);
+      if(doc)row.querySelector('.ticket-view').onclick=()=>openTicket(doc.file_path).catch(e=>setStatus(e.message,true));
+    });
+  }
+  async function uploadTicket(id,row){
+    if(busy)return;
+    const file=row.querySelector('input[type=file]').files[0];
+    if(!file){setStatus('Velg en PDF først.',true);return;}
+    if(file.size>10*1024*1024||file.size===0||(!file.name.toLowerCase().endsWith('.pdf'))){setStatus('Velg en PDF på maksimalt 10 MB.',true);return;}
+    if(!window.confirm('Last opp billetten til '+names.find(x=>x[0]===id)[1]+'? Kontroller at PDF-en tilhører riktig person.'))return;
+    busy=true;row.querySelector('.ticket-save').disabled=true;
+    const old=docs.find(x=>x.participant_id===id);
+    const path=id+'/'+crypto.randomUUID()+'.pdf';
+    setStatus('Laster opp billett …');
+    try{
+      const {error:ue}=await db.storage.from(BUCKET).upload(path,file,{contentType:'application/pdf',upsert:false});
+      if(ue)throw ue;
+      const {error:de}=await db.from('newcastle_flight_tickets').upsert({participant_id:id,file_path:path,updated_at:new Date().toISOString()},{onConflict:'participant_id'});
+      if(de){await db.storage.from(BUCKET).remove([path]);throw de;}
+      if(old?.file_path && old.file_path!==path){const {error:removeError}=await db.storage.from(BUCKET).remove([old.file_path]);if(removeError)console.warn('Gammel billett må eventuelt slettes manuelt:',removeError.message);}
+      await refresh();setStatus('PDF lastet opp for '+names.find(x=>x[0]===id)[1]+'.');
+    }catch(e){setStatus('Opplasting feilet: '+(e.message||'ukjent feil'),true);}
+    finally{busy=false;row.querySelector('.ticket-save')?.removeAttribute('disabled');}
+  }
+  document.querySelector('[data-tab="billetter"]').addEventListener('click',()=>refresh().catch(e=>setStatus(e.message,true)));
+  db.auth.onAuthStateChange(()=>{setTimeout(()=>refresh().catch(e=>setStatus(e.message,true)),0);});
+  refresh().catch(e=>setStatus(e.message,true));
 })();
 </script>
 </body></html>
