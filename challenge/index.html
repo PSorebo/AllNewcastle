@@ -173,7 +173,17 @@ $('goldenClose').onclick=()=>goldenAction('close');
    }
  }
  function renderTeamRoster(){
-   const people=new Map(teamPeople.map(p=>[String(p.id),p.full_name]));
+   // Navneliste kontrollert mot lagfordelingen i LIVE 31.10.2026.
+   // Bruk RPC-data når de finnes; ellers vis den bekreftede deltakerlisten.
+   const confirmedNames=new Map(Object.entries({
+     1:'Sebastian Nenseth',2:'Benjamin Thuve',3:'Fritz Ryan Domingo',
+     4:'Frode Hegg',5:'Fayez Fadie',6:'Benjamin Johannessen',
+     7:'Filips Grindulis',8:'Marius Horni',9:'Sarkawt Kareemi',
+     10:'Stian Abrahamsen',11:'Kenneth Hårsaker',12:'Nicklas Huse',
+     13:'Børre Syversen',14:'Sondre Thorsen',16:'Petter Sørebø',17:'Mats Hovland'
+   }));
+   const people=new Map(confirmedNames);
+   for(const p of teamPeople){if(p&&p.id!=null&&p.full_name)people.set(String(p.id),p.full_name)}
    const ordered=[...teams].sort((a,b)=>String(a.name).localeCompare(String(b.name),'nb'));
    $('teamRoster').innerHTML=ordered.map(team=>{
      const own=String(team.id)===String(myTeam);
