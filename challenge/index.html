@@ -166,10 +166,10 @@ $('goldenClose').onclick=()=>goldenAction('close');
    teamMembers=members||[];
    const ids=[...new Set(teamMembers.map(m=>m.participant_id))];
    try{
-     teamPeople=ids.length?await check(await db.from('newcastle_participants').select('id,full_name').in('id',ids)):[];
+     teamPeople=ids.length?await rpc('challenge_team_roster_names'):[];
      renderTeamRoster();
    }catch(e){
-     $('teamRoster').textContent='Kunne ikke hente deltakernavn: '+e.message+'. Kontakt administrator hvis dette fortsetter.';
+     $('teamRoster').textContent='Kunne ikke hente deltakernavn: '+e.message+'. Kontroller at SQL-funksjonen for lagoversikt er installert.';
    }
  }
  function renderTeamRoster(){
